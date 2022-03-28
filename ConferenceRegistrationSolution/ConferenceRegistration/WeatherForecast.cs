@@ -1,4 +1,4 @@
-namespace ConferenceRegistration
+namespace ConferenceRegistrations
 {
     public class WeatherForecast
     {
