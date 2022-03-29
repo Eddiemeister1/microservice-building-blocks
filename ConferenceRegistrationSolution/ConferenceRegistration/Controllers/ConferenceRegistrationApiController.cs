@@ -8,7 +8,7 @@ public class ConferenceRegistrationApiController : ControllerBase
     private readonly IProcessReservations _reservationProcessor;
 
     [HttpPost("conference-registrations")]
-    public async Task<ActionResult> AddRegistration([FromBody] ConferenceRegistration request)
+    public async Task<ActionResult> AddRegistration([FromBody] ConferencesRegistration request)
     {
         //Validate the thing.
         //Write the Code I wish I had

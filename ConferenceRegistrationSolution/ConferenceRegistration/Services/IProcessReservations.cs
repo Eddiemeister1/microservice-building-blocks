@@ -4,6 +4,6 @@ namespace ConferenceRegistrations
 {
     public interface IProcessReservations
     {
-        Task<ConferenceConfirmation> ProcessReservationAsync(ConferenceRegistration request);
+        Task<ConferenceConfirmation> ProcessReservationAsync(ConferencesRegistration request);
     }
 }

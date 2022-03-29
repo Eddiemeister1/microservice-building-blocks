@@ -2,7 +2,7 @@
 
 public record ConferenceInfo(string id, string name);
 
-public record ConferenceRegistration
+public record ConferencesRegistration
 {
     public ConferenceInfo? Conference { get; init; }
 }
