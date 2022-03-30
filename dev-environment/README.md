@@ -15,3 +15,9 @@ To run our API Locally with Dapr:
 ```
 dapr run --app-id=conference-api --app-port=1337 --dapr-http-port=3500 --dapr-grpc-port=50000 --components-path=.\components -- dotnet run --project ..\ConferenceRegistrationSolution\ConferenceRegistrationApi\ConferenceRegistrationApi.csproj
 ```
+
+To run our reservations processor api:
+
+```
+
+```

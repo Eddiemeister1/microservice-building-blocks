@@ -3,7 +3,7 @@ using ConferenceRegistrationApi.Adapters.Mongo;
 using ConferenceRegistrationApi.GrpcPorts;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDaprClient(); 
+builder.Services.AddDaprClient();
 builder.Services.AddRouting(options =>
 {
     options.ConstraintMap.Add("bsonid", typeof(BsonIdContraint));
@@ -43,8 +43,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseCloudEvents();
+app.MapSubscribeHandler();
 
 app.UseAuthorization();
-app.MapGrpcService<ReservationRequestsGrpcService>();
+//app.MapGrpcService<ReservationRequestsGrpcService>();
 app.MapControllers();
 app.Run(); // spinning, waiting for requests.
