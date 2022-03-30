@@ -1,4 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using Grpc.Core;
 using Grpc.Net.Client;
 using ServerSide;
 
@@ -22,6 +23,22 @@ var requestMessage = new HelloRequest() { Name = name };
 
 var response = await greeterClient.SayHelloAsync(requestMessage);
 
+Console.WriteLine("");
+Console.WriteLine()
 
 
 Console.WriteLine($"The server said {response.Message}");
+
+Console.WriteLine("Need Turn by Turn Directions? Tell us where you want to go today...");
+var destination = Console.ReadLine();
+
+var turnByTurnClient = new TurnByTurn.TurnByTurnClient(channel);
+
+var streamingResponse = turnByTurnClient.StartGuidance(new GuidanceRequest { Address = destination });
+
+await foreach(var step in streamingResponse.ResponseStream.ReadAllAsync())
+{
+    Console.WriteLine($"Next Step: Turn {step.Direction} on {step.Road}");
+}
+
+Console.WriteLine("You have arrived");

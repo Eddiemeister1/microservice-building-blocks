@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 option csharp_namespace = "ServerSide";
+import "google/protobuf/timestamp.proto";
 
 package greet;
 
@@ -18,4 +19,5 @@ message HelloRequest {
 // The response message containing the greetings.
 message HelloReply {
   string message = 1;
+  google.protobuf.Timestamp createdAt = 2;
 }

@@ -20,6 +20,9 @@
     <Protobuf Include="..\ServerSide\Protos\greet.proto" GrpcServices="Client">
       <Link>Protos\greet.proto</Link>
     </Protobuf>
+    <Protobuf Include="..\ServerSide\Protos\turnByTurn.proto" GrpcServices="Client">
+      <Link>Protos\turnByTurn.proto</Link>
+    </Protobuf>
   </ItemGroup>
 
 </Project>

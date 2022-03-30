@@ -1,3 +1,4 @@
+using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using ServerSide;
 
@@ -15,7 +16,8 @@ namespace ServerSide.Services
         {
             return Task.FromResult(new HelloReply
             {
-                Message = "Hello " + request.Name
+                Message = "Hello " + request.Name,
+                CreatedAt = Timestamp.FromDateTime(DateTime.Now.ToUniversalTime())
             });
         }
     }
