@@ -1,7 +1,7 @@
 # Registering for a Conference
 
-The api lets someone rfegister for a conference.
-They POST to out API a reservation, and we register them.
+The api lets someone register for a conference.
+They POST to our API a reservation, and we register them.
 
 The operation:
 
@@ -13,8 +13,8 @@ operation: registration-created
             - description: the identity
         -
             - name: conference
-                description: the conference they are attending
-     
+              description: the conference they are attending    
+
 ```
 
 ## The person makes the request
@@ -33,7 +33,6 @@ Authorization: bearer some.jwt.io
 }
 
 ```
-
 ## Processing
 
 ## What is the response
@@ -43,10 +42,12 @@ Authorization: bearer some.jwt.io
 Location http://server.com/conference-registration-requests/3989389
 
 {
-
-    "conference": {
+"conference": {
         "id": "someid",
         "name": "Microservice World 2022"
     },
     "status": "Pending"
+   
 }
+
+

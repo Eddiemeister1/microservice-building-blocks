@@ -14,31 +14,27 @@ var name = Console.ReadLine();
 
 // channel - is to server that has one or more services.
 var channel = GrpcChannel.ForAddress("https://localhost:3000");
-
-//using the channel a client
+// using the channel a client
 var greeterClient = new Greeter.GreeterClient(channel);
+
 var requestMessage = new HelloRequest() { Name = name };
-
-
 
 var response = await greeterClient.SayHelloAsync(requestMessage);
 
-Console.WriteLine("");
-Console.WriteLine()
-
-
 Console.WriteLine($"The server said {response.Message}");
+Console.WriteLine($"That was generated at {response.CreatedAt}");
 
-Console.WriteLine("Need Turn by Turn Directions? Tell us where you want to go today...");
+
+Console.WriteLine("Need Turn By Turn Directions? Tell us where you want to go today...");
 var destination = Console.ReadLine();
 
 var turnByTurnClient = new TurnByTurn.TurnByTurnClient(channel);
 
-var streamingResponse = turnByTurnClient.StartGuidance(new GuidanceRequest { Address = destination });
+var streamingResponse = turnByTurnClient.StartGuidance(new GuidanceRequest {  Address = destination });
 
 await foreach(var step in streamingResponse.ResponseStream.ReadAllAsync())
 {
     Console.WriteLine($"Next Step: Turn {step.Direction} on {step.Road}");
 }
 
-Console.WriteLine("You have arrived");
+Console.WriteLine("You have arrived!");

@@ -18,7 +18,7 @@ namespace ServerSide.Services
             {
                 Message = "Hello " + request.Name,
                 CreatedAt = Timestamp.FromDateTime(DateTime.Now.ToUniversalTime())
-            });
+            }); 
         }
     }
 }
